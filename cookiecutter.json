@@ -1,0 +1,18 @@
+{
+  "project_name": "Python app",
+  "project_description": "This is a new python app",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "enable_asdf": true,
+  "enable_direnv": true,
+  "container_support": true,
+  "enable_aws": false,
+  "__prompts__": {
+    "project_name": "Friendly name of your project",
+    "project_description": "Description of your project",
+    "project_slug": "Directory/URL friendly project name",
+    "container_support": "Do you want to add container support?",
+    "enable_asdf": "Do you use asdf?",
+    "enable_direnv": "Do you use direnv?",
+    "enable_aws": "Do you want to include the AWS SDK?"
+  }
+}
