@@ -20,6 +20,17 @@ pip install cookiecutter
 cookiecutter https://github.com/jritsema/cookiecutter-python.git
 ```
 
+## Features
+
+- Scaffolds out a new directory with a new Git repo
+- Sets up a Python virtual environment
+- If you enable [direnv](https://direnv.net/) (optional), it will setup automatic activation of the virtual directory when you `cd` into it and deactivate when you leave
+- If you enable [asdf](https://asdf-vm.com/) (optional) it will create a `.tool-versions` file with `direnv` and `python` so that you can run `asdf install` to install required tools.
+- Container support: Adds a `Dockerfile` and `.dockerignore`
+- If you include AWS SDK, it will add it to your `requirements.txt`
+- Includes a `make install` command for installing dependencies and outputting a `piplock.txt` with exact versions, that can be used for reproducible builds
+
+
 ## Example
 
 ```
