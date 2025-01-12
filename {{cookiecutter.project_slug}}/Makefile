@@ -8,6 +8,13 @@ help: Makefile
 	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
 	@echo
 
+## init: initialize a new python project
+.PHONY: init
+init:
+	python -m venv .venv
+	direnv allow .
+	type python
+
 ## install: install project dependencies
 .PHONY: install
 install:
