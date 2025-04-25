@@ -15,12 +15,18 @@ init:
 	direnv allow .
 	type python
 
-## install: install project dependencies
-.PHONY: install
-install:
+## piplock: installs dependencies in requirements.txt and generates piplock.txt
+.PHONY: piplock
+piplock:
 	python -m pip install --upgrade pip
 	pip install -r requirements.txt
 	pip freeze > piplock.txt
+
+## install: install project dependencies from piplock.txt
+.PHONY: install
+install:
+	python -m pip install --upgrade pip
+	pip install -r piplock.txt
 
 ## start: run local project
 .PHONY: start
@@ -28,4 +34,3 @@ start:
 	clear
 	@echo ""
 	python -u main.py
-

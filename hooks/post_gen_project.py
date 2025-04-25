@@ -47,7 +47,7 @@ def post_gen_project():
     if "{{ cookiecutter.enable_direnv }}" != "True":
         out += " && . .venv/bin/activate"
     if "{{ cookiecutter.enable_aws }}" == "True":
-        out += " && make install"
+        out += " && make piplock"
     print(out)
 
 
