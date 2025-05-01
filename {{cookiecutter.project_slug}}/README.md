@@ -7,7 +7,9 @@
 ```
  Choose a make command to run
 
-  install   install project dependencies
+  init      initialize a new python project
+  piplock   installs dependencies in requirements.txt and generates piplock.txt
+  install   install project dependencies from piplock.txt
   start     run local project
 ```
 
