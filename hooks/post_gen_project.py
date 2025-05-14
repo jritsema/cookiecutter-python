@@ -32,10 +32,6 @@ def post_gen_project():
     else:
         remove_file(".envrc")
 
-    if "{{ cookiecutter.enable_aws }}" == "True":
-        with open("requirements.txt", "w") as f:
-            f.write(f"boto3")
-
     print("Creating virtual python environment...")
     os.system("python -m venv .venv")
 
@@ -47,7 +43,7 @@ def post_gen_project():
     if "{{ cookiecutter.enable_direnv }}" != "True":
         out += " && . .venv/bin/activate"
     if "{{ cookiecutter.enable_aws }}" == "True":
-        out += " && make piplock"
+        out += " && make install boto3"
     print(out)
 
 
