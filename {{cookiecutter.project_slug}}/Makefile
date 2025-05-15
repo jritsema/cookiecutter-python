@@ -13,22 +13,22 @@ help: Makefile
 init:
 	python -m venv .venv
 	direnv allow .
-	type python
 
 ## install: add a new package (make install <package>), or install all project dependencies from piplock.txt (make install)
 .PHONY: install
 install:
 	python -m pip install --upgrade pip
-ifeq ($(filter-out $@,$(MAKECMDGOALS)),)
-	@echo "Installing dependencies from piplock.txt"
-	pip install -r piplock.txt
-else
-	@echo "Adding package $(filter-out $@,$(MAKECMDGOALS)) to requirements.txt"
-	@grep -q "^$(filter-out $@,$(MAKECMDGOALS))$$" requirements.txt || echo "$(filter-out $@,$(MAKECMDGOALS))" >> requirements.txt
-	pip install $(filter-out $@,$(MAKECMDGOALS))
-	pip install -r requirements.txt
-	pip freeze > piplock.txt
-endif
+	@if [ -z "$(filter-out install,$(MAKECMDGOALS))" ]; then \
+		echo "Installing dependencies from piplock.txt"; \
+		pip install -r piplock.txt; \
+	else \
+		pkg="$(filter-out install,$(MAKECMDGOALS))"; \
+		echo "Adding package $$pkg to requirements.txt"; \
+		grep -q "^$$pkg$$" requirements.txt || echo "$$pkg" >> requirements.txt; \
+		pip install $$pkg; \
+		pip install -r requirements.txt; \
+		pip freeze > piplock.txt; \
+	fi
 
 # Empty rule to handle package name argument
 %:
