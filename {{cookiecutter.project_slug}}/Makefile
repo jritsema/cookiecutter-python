@@ -39,4 +39,4 @@ install:
 start:
 	clear
 	@echo ""
-	python -u main.py
+	@if [ -f .env ]; then export $$(grep -v '^#' .env | xargs) && python -u main.py; else python -u main.py; fi
