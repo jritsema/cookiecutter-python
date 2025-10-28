@@ -29,6 +29,7 @@ cookiecutter https://github.com/jritsema/cookiecutter-python.git
 - Container support: Adds a `Dockerfile` and `.dockerignore`
 - If you include AWS SDK, it will add it to your `requirements.txt`
 - Includes a `make install` command for installing dependencies and outputting a `piplock.txt` with exact versions, that can be used for reproducible builds
+- `make start` will run `main.py` with envvars loaded from `.env` (optional) and enable unbuffered binary I/O
 
 
 ## Example
